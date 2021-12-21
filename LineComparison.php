@@ -25,7 +25,7 @@ class LineComparison {
         $distance = sqrt(
                     (pow(($this->pointX2 - $this->pointX1), 2)) + 
                     (pow($this->pointY2 - $this->pointY1, 2)));
-        return $distance;
+        return round($distance, 2);
 
     }
 
@@ -36,20 +36,21 @@ class LineComparison {
     public function checkEquality($line1, $line2) {
         if ($line1 == $line2) {
             echo "both line length are equal";
-        } else {
-            echo "both line length are different";
-        }
+        } elseif ($line1 > $line2) {
+            echo "Line1 is Greater than Line2";
+        } else 
+            echo "Line2 is greater than Line1";
     }
 }
 
 $calculateLength = new LineComparison();
 $calculateLength->getUserInput();
 $line1 = $calculateLength->lengthOfLine();
-echo "Length of line1 is : " . round($line1, 2) . "\n";
+echo "Length of line1 is : " . $line1 . "\n";
 
 $calculateLength->getUserInput();
 $line2 = $calculateLength->lengthOfLine();
-echo "Length of line2 is : " . round($line2, 2) . "\n";
+echo "Length of line2 is : " . $line2 . "\n";
 
 $calculateLength->checkEquality($line1, $line2);
 
